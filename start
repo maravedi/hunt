@@ -1,0 +1,10 @@
+#!/bin/bash
+if [[ "$( docker ps -a | grep hunter)" ]]; then
+	echo "Container already exists"
+	echo "Starting the container..."
+	docker start -i hunter
+else
+	echo "Container does not exist"
+	echo "Creating the container..."
+	docker run --name hunter -it hunter_image
+fi
